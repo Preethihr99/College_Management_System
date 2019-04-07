@@ -1,0 +1,1334 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+void gotoxy(int x,int y)
+{
+printf("%c[%d;%df",0x1B,y,x);
+}
+struct node
+{
+int value;
+struct node*next;
+};
+typedef struct node snode;
+snode*create_node(int);
+void insert_node_first();
+void delete_post();
+void display();
+void search();
+void update_val();
+snode *newnode,*ptr,*prev,*temp;
+snode *first=NULL,*last=NULL;
+struct info
+{
+char name[50],designation[50],qualification[50],intrest[50],email[50];
+};
+void nmit_logo();
+void return_home();
+void about_us();
+void main_page();
+void choice();
+void department();
+void print_detaec();
+void print_datamech();
+void print_datacivil();
+void print_datacs();
+void placements();
+void highlights();
+void news();
+void foreign();
+void activities();
+void contact();
+void facility();
+struct login
+{
+int username;
+char password[30];
+};
+struct student
+{
+char admn[10];
+char name[20];
+char l_name[20];
+char e_mail[20];
+char gender[10];
+int month;
+int date;
+int year;
+int mob;
+};
+typedef struct login login;
+typedef struct student student;
+struct details
+{
+char school[20];
+char college[20];
+float ssmarks,pumarks;
+}det;
+struct eng_details
+{
+int rank;
+char branch[20];
+}eng;
+void gurukul();
+void login_logo();
+login login_menu();
+void check_email(student s);
+void check_first_name(student s);
+void check_last_name(student s);
+void sign_up_header();
+void sign_up();
+void check_year(student s);
+void check_leap_year(student s);
+void display_month();
+void check_month(student s);
+void display_date(student s);
+void check_date(student s);
+char password(int *key);
+
+void admission();
+int payment(int choice);
+int pay();
+void admit();
+void academics();
+void student_portal();
+void student_portal_logo();
+void student_choice();
+void holiday();
+void first_yeartt();
+void second_yeartt();
+void third_yeartt();
+void fourth_yeartt();
+void timetable_display();
+void events();
+void main()
+{ 
+main_page();
+}
+                  //MAIN PAGE//
+
+void nmit_logo()
+{
+system("clear");
+int i;
+gotoxy(1,1);
+
+gotoxy(1,3);
+printf("");
+gotoxy(135,3);
+printf("");
+printf("");
+gotoxy(136,4);
+printf("");
+gotoxy(50,4);
+printf("NITTE MEENAKSHI INSTITUTE OF TECHNOLOGY");
+gotoxy(1,5);
+printf("");
+gotoxy(137,5);
+printf("");
+printf("\n An Autonomous Institute with Grade-A status by NAAC|APPROVED BY UGC/AICTE/GOVT OF KARNATAKA|BANGALORE");
+gotoxy(138,6);
+printf("");
+printf("\n\n");
+
+}
+void choice()
+{
+int option;
+printf("\nEnter your choice:\t");
+scanf("%d",&option);
+system("clear");
+switch(option)
+{
+case 1 :  main_page();
+break;
+case 2 :  about_us();
+break;
+case 3 :  department();
+break;
+case 4 :  admission();
+return_home();
+break;
+case 5 :  placements();
+break;
+case 6 :  facility();
+break;
+case 7 :  contact();
+break;
+case 9 :  highlights();
+break;
+case 10:  news();
+break;
+case 11:  foreign();
+break;
+case 12:  activities();
+break;
+case 8:
+case 13:  gurukul();
+break;
+case 14:  exit(0);
+break;
+default:  printf("Wrong choice!!\n\n");
+return_home();
+break;
+}
+}
+void main_page()
+{
+int i;
+nmit_logo();
+gotoxy(3,10);
+for(i=0;i<137;i++);
+printf("-");
+gotoxy(3,11);
+printf("|");
+for(i=0;i<8;i++);
+printf("        |");
+gotoxy(3,12);
+printf("|HOME|ABOUT US|DEPARTMENT|ADMISSION|PLACEMENT|FACILITY|CONTACT US|SIGNUP|LOGIN|");
+gotoxy(3,13);
+printf("|");
+for(i=0;i<8;i++)
+printf("%d     |",i+1);
+gotoxy(3,14);
+for(i=0;i<137;i++)
+printf("-");
+printf("\n");
+for(i=0;i<39;i++)
+printf("_");
+printf("\n HIGHLIGHTS :\n Nitte Meenakshi Institute of Technology(NMIT)is an Autonomous Institution affiliated to the Visvesvaraya Technological University(VTU)..... \n|Press '9' to read more\n");
+for(i=0;i<39;i++)
+printf("_");
+printf("|");
+gotoxy(48,15);
+for(i=0;i<45;i++);
+printf("_");
+gotoxy(47,16);
+printf("|\t\t\t\t\t\t |");
+gotoxy(47,17);
+printf("|NEWS AND EVENTS:             |");
+gotoxy(47,18);
+printf("|\t\t\t\t\t\t  |");
+gotoxy(47,19);
+printf("|->Five day workshop on aero space Engg. : A|");
+gotoxy(47,20);
+printf("|\t\t\t\t\t\t  |");
+gotoxy(47,21);
+printf("|platform for imparting specific knowled... |");
+gotoxy(47,22);
+printf("|\t\t\t\t\t\t  |");
+gotoxy(47,23);
+printf("|->Andriod and hybrid app development:Dept|");
+gotoxy(47,24);
+printf("|\t\t\t\t\t\t  |");
+gotoxy(47,25);
+printf("|Department of ISc and Engineering is or...|");
+gotoxy(47,26);
+printf("|\t\t\t\t\t\t  |");
+gotoxy(47,27);
+printf("|            Press '10' to read more|");
+gotoxy(47,28);
+printf("|______________________|");
+gotoxy(99,15);
+for(i=0;i<44;i++)
+printf("_");
+gotoxy(98,16);
+printf("|\t\t\t\t\t\t\t\t|\n");
+gotoxy(98,17);
+printf("| FOREIGN COLLABORATION :\t\t\t\t|\n");
+gotoxy(98,18);
+printf("|\t\t\t\t\t\t\t\t|\n");
+gotoxy(98,19);
+printf("|->Collaboration with north Dakota State   |\n");
+gotoxy(98,20);
+printf("|\t\t\t\t\t\t\t\t|\n");
+gotoxy(98,21);
+printf("| University(NDSU),Fargo,USA and Nitte   |\n");
+gotoxy(98,22);
+printf("|\t\t\t\t\t\t\t\t|\n");
+gotoxy(98,23);
+printf("| Meenakshi Institute of Technology(NMIT)  |\n");
+gotoxy(98,24);
+printf("|\t\t\t\t\t\t\t\t|\n");
+gotoxy(98,25);
+printf("|or Nitte School of Management,Banglore...|\n");
+gotoxy(98,26);
+printf("|\t\t\t\t\t\t\t\t|\n");
+gotoxy(98,27);
+printf("|                 Press '11' to read more|\n");
+gotoxy(98,28);
+printf("|________________|\n");
+gotoxy(15,30);
+for(i=0;i<54;i++)
+printf("_");
+gotoxy(14,31);
+printf("|\t\t\t\t\t\t   |");
+gotoxy(14,32);
+printf("| EXTRA & CO-CURRICULAR ACTIVITIES: \t\t  |");
+gotoxy(14,33);
+printf("|\t\t\t\t\t\t   |");
+gotoxy(14,34);
+printf("|->Sports...             \t\t  |");
+gotoxy(14,35);
+printf("|->Ethnic Day Celebration...    \t\t  |");
+gotoxy(14,36);
+printf("|->Music Club...           \t\t  |");
+gotoxy(14,37);
+printf("|->Dance Club...           \t\t  |");
+gotoxy(14,38);
+printf("|->Anaadyanta...          \t\t |");
+gotoxy(14,39);
+printf("|     \t\t  press '12'to read more|");
+gotoxy(14,40);
+printf("|__________________|");
+gotoxy(74,30);
+for(i=0;i<54;i++)
+printf("_");
+gotoxy(73,31);
+printf("|\t\t\t\t\t\t     |");
+gotoxy(73,32);
+printf("| MY GURUKUL:\t\t\t\t\t      |");
+gotoxy(73,33);
+printf("|\t\t\t\t\t\t     |");
+gotoxy(73,34);
+printf("|--> The Student Knowledge Portal...\t\t    |");
+gotoxy(73,35);
+printf("|\t\t\t\t\t\t     |");
+gotoxy(73,36);
+printf("|\t\t\t\t\t\t     |");
+
+gotoxy(73,37);
+printf("|\t\t\t\t\t\t     |");
+gotoxy(73,38);
+printf("|\t\t      Press'13'toaccess gurukul |");
+gotoxy(73,39);
+printf("|\t\t EXIT: Press'14'to EXIT         |");
+gotoxy(73,40);
+printf("|______________________|");
+choice();
+}
+void return_home()
+{
+char ch;
+printf("\n\n\t\tReturn to home page (Yes|No)? : \t");
+scanf("%c",&ch);
+if(ch=='N'||ch=='n')
+{
+printf("\n\n QUITTINTG\n\n");
+exit(0);
+}
+else
+main_page();
+}
+void department()
+{
+int n;
+nmit_logo();
+printf("\n1)COMPUTER SCIENCE AND ENGNEERING\n2)ELECTRONICS & COMMUNICATION\n3)MECHANICAL ENGNEERING\n4)CIVIL ENGNEERING\n5)RETURN HOME PAGE\n");
+printf("Choose branch:\n");
+scanf("%d",&n);
+switch(n)
+{
+case 1:  print_datacs();
+break;
+case 2:   print_dataec();
+break;
+case 3:   print_datamech();
+break;
+case 4:   print_datacivil();
+break;
+case 5:   return_home();
+break;
+default:  main_page();
+choice();
+break;
+}
+}
+void print_datacs()
+{
+FILE *ptr1;
+char c;
+struct info teacher[30];
+int i=0,curr_lines=0;
+ptr1=fopen("cs_details.txt","r");
+/*while(fread(&teacher[i],sizeof(struct info),1,ptr1))
+{
+printf("\n");
+printf("%d\tNAME:%s",i+1,teacher[i].name);
+printf("\n\tDESIGNATION:%s",teacher[i].designation);
+printf("\n\tQUALIFICATION:%s",teacher[i].qualification);
+printf("\n\tAREA OF INTREST:%s",teacher[i].intrest);
+printf("\n\tEMAIL:%s",teacher[i].email);
+printf("\n");
+i++;
+}*/
+while((c=getc(ptr1))!=EOF)
+{
+printf("%c",c);
+if(c=='\n')
+{
+curr_lines++;
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(ptr1);
+department();
+}
+void print_datacivil()
+{
+FILE *ptr1;
+char c;
+struct info teacher[30];
+int i=0,curr_lines=0;
+ptr1=fopen("civdetails.txt","r");
+/*while(fread(&teacher[i],sizeof(struct info),1,ptr1))
+{
+printf("\n");
+printf("%d\tNAME:%s",i+1,teacher[i].name);
+printf("\n\tDESIGNATION:%s",teacher[i].designation);
+printf("\n\tQUALIFICATION:%s",teacher[i].qualification);
+printf("\n\tAREA OF INTREST:%s",teacher[i].intrest);
+printf("\n\tEMAIL:%s",teacher[i].email);
+printf("\n");
+i++;
+}*/
+while((c=getc(ptr1))!=EOF)
+{
+printf("%c",c);
+if(c=='\n')
+{
+curr_lines++;
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(ptr1);
+department();
+}
+void print_datamech()
+{
+FILE *ptr1;
+char c;
+struct info teacher[30];
+int i=0,curr_lines=0;
+ptr1=fopen("mechdetails.txt","r");
+/*while(fread(&teacher[i],sizeof(struct info),1,ptr1))
+{
+printf("\n");
+printf("%d\tNAME:%s",i+1,teacher[i].name);
+printf("\n\tDESIGNATION:%s",teacher[i].designation);
+printf("\n\tQUALIFICATION:%s",teacher[i].qualification);
+printf("\n\tAREA OF INTREST:%s",teacher[i].intrest);
+printf("\n\tEMAIL:%s",teacher[i].email);
+printf("\n");
+i++;
+}*/
+while((c=getc(ptr1))!=EOF)
+{
+printf("%c",c);
+if(c=='\n')
+{
+curr_lines++;
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(ptr1);
+department();
+}
+void print_dataec()
+{
+FILE *ptr1;
+char c;
+struct info teacher[30];
+int i=0,curr_lines=0;
+ptr1=fopen("ecdetails.txt","r");
+/*while(fread(&teacher[i],sizeof(struct info),1,ptr1))
+{
+printf("\n");
+printf("%d\tNAME:%s",i+1,teacher[i].name);
+printf("\n\tDESIGNATION:%s",teacher[i].designation);
+printf("\n\tQUALIFICATION:%s",teacher[i].qualification);
+printf("\n\tAREA OF INTREST:%s",teacher[i].intrest);
+printf("\n\tEMAIL:%s",teacher[i].email);
+i++;
+}*/
+while((c=getc(ptr1))!=EOF)
+{
+printf("%c",c);
+if(c=='\n')
+{
+curr_lines++;
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(ptr1);
+department();
+}
+void about_us()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("about_us.txt","r");
+//system("clear");
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increment count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+return_home();
+}
+void placements()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("placement.txt","r");
+//system("clear");
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increment count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+return_home();
+}
+void facility()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("facility.txt","r");
+//system("clear");
+while((c=getc(f1)!=EOF))
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increment count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key//
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+return_home();
+}
+void contact()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("contact_us.txt","r");
+//system("clear");
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increment count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+return_home();
+}
+void highlights()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("highlights.txt","r");
+//system("clear");
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increament count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+return_home();
+}
+void news()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("news.txt","r");
+//system("clear");
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increment count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+return_home();
+}
+void foreign()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("foreign_collaborations.txt","r");
+//system("clear");
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increment count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+return_home();
+}
+void activities()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("activities.txt","r");
+//system("clear");
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increment count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+return_home();
+}
+///////////////////////////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////////////////
+//                      SIGNUP/LOGIN
+///////////////////////////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////////////////
+void gurukul()
+{
+login_logo();
+int choice,i;
+gotoxy(34,19);
+for(i=0;i<80;i++)
+printf("_");
+gotoxy(45,15);
+printf("1.LOG IN");
+gotoxy(95,15);
+printf("2.SIGN UP");
+gotoxy(55,17);
+printf("Enter Your CHOICE  :\t");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1: login_menu();
+student_portal();
+break;
+case 2: sign_up();
+return_home();
+break;
+}
+}
+void login_logo()
+{
+system("clear");
+int i;
+gotoxy(33,9);
+for(i=0;i<11;i++)
+printf("|\n\t\t\t\t");
+gotoxy(114,9);
+for(i=0;i<11;i++)
+printf("|\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
+gotoxy(34,8);
+for(i=0;i<80;i++)
+printf("_");
+gotoxy(70,10);
+printf("GURUKUL");
+gotoxy(34,12);
+for(i=0;i<80;i++)
+printf("-");
+}
+login login_menu()
+{
+login usr;
+int i;
+login_logo();
+gotoxy(33,17);
+for(i=0;i<9;i++)
+printf("|\n\t\t\t\t");
+gotoxy(114,17);
+for(i=0;i<9;i++)
+printf("|\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
+gotoxy(34,8);
+gotoxy(34,25);
+for(i=0;i<80;i++)
+printf("_");
+gotoxy(55,15);
+printf("LOG IN");
+gotoxy(45,18);
+printf("Enter username :\t");
+scanf("%d",&usr.username);
+gotoxy(45,20);
+printf("Enter password: \t");
+scanf("%s",usr.password);
+return(usr);
+}
+void student_portal_logo()
+{
+system("clear");
+int i;
+gotoxy(7,4);
+for(i=0;i<130;i++)
+printf("_");
+for(i=5;i<25;i++)
+{
+gotoxy(6,i);
+printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+}
+gotoxy(60,7);
+printf("STUDENT PORTAL");
+gotoxy(7,10);
+for(i=0;i<130;i++)
+printf("_");
+gotoxy(7,24);
+for(i=0;i<130;i++)
+printf("_");
+gotoxy(7,35);
+printf("Copyrights,All rights are reserved.\t\t\t\tJointly developed by ATUM and eFlow Gurukul Solutions Pvt Ltd.\n\n\n\t\t");
+}
+void student_portal()
+{
+system("clear");
+int i,choice;
+student_portal_logo();
+gotoxy(15,13);
+printf("INSTITUTIONAL HOLIDAYS");
+gotoxy(15,14);
+for(i=0;i<22;i++)
+printf("~");
+gotoxy(17,15);
+printf("LIST OF RESTRICTED");
+gotoxy(17,17);
+printf("HOLIDAYS AND GENERAL");
+gotoxy(17,19);
+printf("HOLIDAYS OF THE");
+gotoxy(17,21);
+printf("YEAR 2016-2017");
+gotoxy(17,23);
+printf("------->   Press 1");
+gotoxy(55,13);
+printf("TIME TABLE");
+gotoxy(55,14);
+for(i=0;i<22;i++)
+printf("~");
+gotoxy(55,15);
+printf("TIME TABLE OF ALL");
+gotoxy(55,17);
+printf("YEARS WITH BOTH");
+gotoxy(55,19);
+printf("SEMESTERS 1 AND 2");
+gotoxy(55,21);
+printf("OF YEAR 2016-2017");
+gotoxy(55,23);
+printf("------->   Press 2");
+gotoxy(85,13);
+printf("NEWS AND EVENTS");
+gotoxy(85,14);
+for(i=0;i<22;i++)
+printf("~");
+gotoxy(85,15);
+printf("LATEST EVENTS AND");
+gotoxy(85,17);
+printf("NEWS FROM THE CAMPUS");
+gotoxy(85,19);
+printf("REGARDING ACADEMIC");
+gotoxy(85,21);
+printf("DETAILS AND OTHERS");
+gotoxy(85,23);
+printf("------->  Press 3");
+gotoxy(115,13);
+printf("LOG OUT");
+gotoxy(115,14);
+for(i=0;i<22;i++)
+printf("~");
+gotoxy(115,15);
+printf("LOGGING OUT OF THE");
+gotoxy(115,17);
+printf("STUDENT PORTAL.....");
+gotoxy(115,19);
+printf("PAGE REDIRECTED");
+gotoxy(115,21);
+printf("TO HOME PAGE");
+gotoxy(115,23);
+printf("------>  Press 4");
+printf("\n\n\t\tENTER ANY CHARACTER TO CONTINUE:\n");
+scanf("%d",&choice);
+system("clear");
+student_choice();
+}
+void student_choice()
+{
+int choice;
+printf("\n\n\t\tENTER YOUR CHOICE:\n");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:  holiday();
+break;
+case 2:  timetable_display();
+student_portal();
+break;
+case 3:  events();
+student_portal();
+break;
+case 4:  student_portal_logo();
+printf("\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\tLOGGING OUT\n");
+main_page();
+break;
+default:  student_portal();
+break;
+}
+}
+void events()
+{
+char c;
+FILE *f1;
+int curr_lines=0;
+printf("\n\n\n");
+f1=fopen("news.txt","r");
+//system("clear");
+while((c==getc(f1))!=EOF)
+{
+printf("%c",c);
+//If current character is a new line character,
+//then increment count of current lines
+if(c=='\n')
+{
+curr_lines++;
+//If count of current lines reaches limit,then
+//wait for user to enter a key
+if(curr_lines==10)
+{
+curr_lines=0;
+getchar();
+}
+}
+}
+fclose(f1);
+}
+void holiday()
+{
+int c;
+printf("\n\n***********************************************************************\n");
+printf("\n\t\t\t\t\t\t\t\t\tINSTITUTIONAL HOLIDAYS\n");
+printf("\n***************************************************************\n");
+printf("__________________________________________________________________________");
+printf("\n\tDATE\t\t\t\t\t\tDISCRIPTION\n");
+printf("________________________________________________________________________\n");
+printf("01|  Tuesday, 15 August 2017\t\tIndependence Day\n");
+printf("02|  Friday, 25 August 2017\t\tGanesh Chaturthi\n");
+printf("03|  Saturday, 02 September 2017\t\tBhakrid\n");
+printf("04|  Tuesday, 19 September 2017\t\tMahalaya Amavase\n");
+printf("05|  Friaday, 29 September 2017\t\tAyoodha Pooja\n");
+printf("06|  Saturday, 30 September 2017\t\tVijayadashami\n");
+printf("07|  Monday, 02 October 2017\t\tGandhi Jayanthi\n");
+printf("08|  Thursday, 05 October 2017\t\tValmiki Jayanthi\n");
+printf("09|  Wednesday, 18 October 2017\t\tNaraka Chaturdashi\n");
+printf("10|  Friday, 20 October 2017\t\tDeepavali\n");
+printf("11|  Wednesday, 01 November 2017\t\tRajyotsava Day\n");
+printf("12|  Monday, 06 November 2017\t\tKanaka Jayanthi\n");
+printf("13|  Friday, 01 December 2017\t\tID-MILAD\n"); 
+printf("14|  Monday, 25 December 2017\t\tChristmas day\n");
+
+printf("\n Enter any character to continue");
+scanf("%d",&c);
+student_portal();
+}
+void timetable_display()
+{
+int n;
+printf("Enter the year");
+scanf("%d",&n);
+switch(n)
+{
+case 1:
+first_yeartt();
+break;
+case 2:
+second_yeartt();
+break;
+case 3:
+third_yeartt();
+break;
+case 4:
+fourth_yeartt();
+break;
+default:
+printf("Enter a valid year:");
+}
+}
+void first_yeartt()
+{
+system("clear");
+char c;
+FILE *f1;
+int curr_lines=0;
+f1=fopen("1styear.txt","r");
+curr_lines=0;
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+/*if(c=='\n')
+{
+curr_lines++;
+if(curr_lines==20)
+{
+curr_lines=0;
+getchar();
+}
+}*/
+}
+fclose(f1);
+timetable_display();
+}
+void second_yeartt()
+{
+system("clear");
+char c;
+FILE *f1;
+f1=fopen("2ndyear.txt","r");
+int curr_lines=0;
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+}
+fclose(f1);
+timetable_display();
+}
+void third_yeartt()
+{
+system("clear");
+char c;
+FILE *f1;
+f1=fopen("3rdyear.txt","r");
+int curr_lines=0;
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+}
+fclose(f1);
+timetable_display();
+}
+void fourth_yeartt()
+{
+system("clear");
+char c;
+FILE *f1;
+f1=fopen("4thyear.txt","r");
+int curr_lines=0;
+while((c=getc(f1))!=EOF)
+{
+printf("%c",c);
+}
+fclose(f1);
+timetable_display();
+}
+void sign_up_header()
+{
+system("clear");
+int i;
+gotoxy(0,2);
+for(i=0;i<143;i++)
+printf("*");
+gotoxy(0,3);
+printf("\n\t\t\t\t\t^^^^^^^^^^^^^^^A NOOBIE??^^^^^^^^^^^^^^^^^^\n\n");
+gotoxy(0,5);
+printf("\n\t\t\t\t\t\t               SIGN UP!!\n\n");
+gotoxy(0,8);
+for(i=0;i<143;i++)
+printf("*");
+}
+void sign_up()
+{
+sign_up_header();
+
+
+}
+void check_first_name(student s)
+{
+int i;
+for(i=0;i<strlen(s.name);i++)
+{
+if(isdigit(s.name[i]))
+{
+printf("\n\t\t\t\t\t\tName cannot contain digits\n");
+printf("\n\t\tFIRST NAME  :\t\t");
+scanf("%s",s.name);
+check_first_name(s);
+}
+}
+}
+void check_last_name(student s)
+{
+int i;
+for(i=0;i<strlen(s.l_name);i++)
+{
+if(isdigit(s.l_name[i]))
+{
+printf("\n\t\t\t\t\t\tName cannot contain digits\n");
+printf("\n\t\t LAST NAME   :\t\t");
+scanf("%s",s.l_name);
+check_last_name(s);
+}
+}
+}
+void check_email(student s)
+{
+int i=0;
+int flag=0;
+char z;
+while((z=s.e_mail[i])!='\0')
+{
+if(z=='@')
+{
+flag=1;
+}
+i++;
+}
+if(flag==0)
+{
+printf("\n\t\t\t\t\t\tWrong Format\n");
+printf("\n\t\t\t\t\t\tPlease check and enter again\n");
+printf("\n\t\t EMAIL ADDRESS  :\t\t");
+scanf("%s",s.e_mail);
+check_email(s);
+}
+}
+void check_year(student s)
+{
+if(s.year<1860||s.year>2016)
+{
+printf("\n\t\t\t\t\t\tINVALID YEAR!!\n\n\t\t\t\t\t\tPlease try again....\n");
+printf("\n\t\tBIRTH YEAR   :\t\t");
+scanf("%d",&s.year);
+check_year(s);
+}
+}
+void display_month()
+{
+printf("\n\n\t\t1.January\t\t2.February\t\t3.March \t\t4.April\n\n\t\t5.May  \t\t 6.June  \t\t7.July  \t\t8.August\n\n\t\t9.September\t\t10.October\t\t11.November\t\t12.December\n\n\t\t");
+}
+void check_month(student s)
+{
+switch(s.month)
+{
+case 1:
+case 2:
+case 3:
+case 4:
+case 5:
+case 6:
+case 7:
+case 8:
+case 9:
+case 10:
+case 11:
+case 12:
+break;
+default:
+printf("\n\t\t\t\t\t\tInvalid month number\n\n\t\t\t\t\t\tPlease try again...\n");
+printf("\n\t\tBIRTH MONTH NO:\t\t");
+scanf("%d",&s.month);
+check_month(s);
+break;
+}
+}
+void display_date(student s)
+{
+int i;
+printf("\n\n\t\t");
+if(s.month==4||s.month==6||s.month==9||s.month==11)
+{
+for(i=0;i<30;i++)
+printf("%d",i+1);
+}
+else
+if((((s.year%4==0)&&(s.year%100!=0))||(s.year%400==0))&&s.month==2)
+{
+for(i=0;i<29;i++)
+printf("%d",i+1);
+}
+else
+if(!(((s.year%4==0)&&(s.year%100!=0))||(s.year%400==0))&&s.month==2)
+{
+{
+for(i=0;i<28;i++)
+printf("%d",i+1);
+}
+}
+else
+{
+for(i=0;i<31;i++)
+printf("%d",i+1);
+}
+printf("\n\n");
+}
+void check_date(student s)
+{
+if((s.month==4||s.month==6||s.month==9||s.month==11)&&(s.date==0||s.date>30))
+{
+printf("\n\t\t\t\t\t\tInvalid entry\n\n\n\n\t\t\t\tPlease try again....\n");
+printf("\n\t\tBIRTH DATE  :\t\t");
+scanf("%d",&s.date);
+check_date(s);
+}
+else
+if(((((s.year%4==0)&&(s.year%100!=0))||(s.year%400==0))&&s.month==2)&&(s.date==0||s.date>30))
+{
+printf("\n\t\t\t\t\t\tInvalid Entry\n\n\t\t\t\t\t\tPlease try again...\n");
+printf("\n\t\tBIRTH DATE  :\t\t");
+scanf("%d",&s.date);
+check_date(s);
+}
+else
+if((!(((s.year%4==0)&&(s.year%100!=0))||(s.year%400==0))&&s.month==2)&&(s.date==0||s.date>30))
+{
+printf("\n\t\t\t\t\t\tInvalid Entry\n\n\t\t\t\t\t\tPlease try again....\n");
+printf("\n\t\tBIRTH DATE  :\t\t");
+scanf("%d",&s.date);
+check_date(s);
+}
+else
+if(s.date>31)
+{
+printf("\n\t\t\t\t\t\tInvalid Entry\n\n\t\t\t\t\t\tPlease try again....\n");
+printf("\n\t\tBIRTH DATE  :\t\t");
+scanf("%d",&s.date);
+check_date(s);
+}
+}
+char password(int *key)
+{
+char password1[20],password2[20],ch;
+int i=0;
+sign_up_header();
+printf("\n\t\t\tYou've been registered!\n\n\t\t\t USERNAME:\t\t%d",*key);
+PASSWORD:
+printf("\n\n\n\t\t\tEnter your PASSWORD  :\t");
+scanf("%s",password1);
+printf("\n\n\t\t\tConfirm your PASSWORD  :\t");
+scanf("%s",password2);
+if(strcmp(password1,password2)==0)
+printf("\n\t\t\t\t\t\tYOUR PASSWORD IS VALID!!");
+else
+{
+printf("\n\t\t\t\t\tInvalid Entry\n\n\t\t\t\t\tPlease try again....\n");
+goto PASSWORD;
+}
+FILE *fp1;
+fp1=fopen("signup.txt","a");
+fprintf(fp1,"\nPASSWORD   :%s",password1);
+fclose(fp1);
+printf("\n\n\n\t\t\t\tYAYY!!YOU HAVE SUCCESSFULLY COMPLETED SIGN UP!!\n\n");
+scanf("%c",&ch);
+return(password1[i++]);
+}
+////////////////////////////i///////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////////////
+//              ADMISSION
+///////////////////////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////////////
+void admission()
+{
+system("clear");
+nmit_logo();
+
+
+
+gotoxy(30,10);
+printf("*****************~~~~~~~~~~~~~ONLINE ADMISSION~~~~~~~~~~~~~***************\n");
+gotoxy(50,14);
+printf("~~~~~~~~~~~~~~~~~~~~PERSONAL DETAILS~~~~~~~~~~~~~~~~~~~~~~~~\n");
+student s;
+int i;
+char ch;
+FILE *fp1;
+fp1=fopen("admission.txt","a");
+if(fp1==NULL)
+{
+printf("\n FILE CAN NOT BE OPENED");
+exit(0);
+}
+gotoxy(15,16);
+printf("ENTER DETAILS:\n\n\n");
+printf("\n\t\tFIRST NAME  :\t\t");
+scanf("%s",s.name);
+check_first_name(s);
+printf("\n\t\tLAST NAME  :\t\t");
+scanf("%s",s.l_name);
+check_last_name(s);
+printf("\n\t\tEMAIL ADDRESS :\t\t");
+scanf("%s",s.e_mail);
+check_email(s);
+printf("\n\t\tMOBILE NO.  :\t\t");
+scanf("%d",&s.mob);
+printf("\n\t\tBIRTH YEAR  :\t\t");
+scanf("%d",&s.year);
+check_year(s);
+display_month();
+printf("\n\t\t BIRTH MONTH NO :\t\t");
+scanf("%d",&s.month);
+check_month(s);
+display_date(s);
+printf("\n\t\tBIRTH DATE  :\t\t");
+scanf("%d",&s.date);
+check_date(s);
+printf("\n\t\t GENDER(M/F) :\t\t");
+scanf("%s",s.gender);
+
+fprintf(fp1,"\n\n------>\n\nFirst name\t\t%s\n Last name\t\t%s\nEmail id\t\t%s\n Mobile No.\t\t%d\n DOB(dd/mm/yyyy)\t%d/%d/%d\n Gender\t\t%s",s.name,s.l_name,s.e_mail,s.mob,s.date,s.month,s.year,s.gender);
+fclose(fp1);
+system("clear");
+academics();
+}
+void academics()
+{
+nmit_logo();
+char ch;
+FILE *fp1;
+fp1=fopen("admission.txt","a");
+if(fp1==NULL)
+{
+printf("\nFILE CANNOT BE OPENED");
+return;
+}
+gotoxy(24,10);
+printf("*********************~~~~~~~~~~~~~~~~~~~ONLINE ADMISSION~~~~~~~~~~~~~~~~~~*************************\n");
+gotoxy(50,14);
+printf("~~~~~~~~~~~~~~~~~ACADEMIC DETAILS~~~~~~~~~~~~~~~~~\n");
+
+
+printf("\n\t\tENTER YOUR CET/COMED-K RANK :\t\t");
+scanf("%d",&eng.rank);
+fprintf(fp1,"\nENTRANCE EXAM RANK  :\t%d",eng.rank);
+fclose(fp1);
+system("clear");
+admit(eng);
+}
+void admit(struct eng_details eng)
+{
+float percentss,percentpu;
+char ch;
+int branch;
+nmit_logo();
+FILE *fp1;
+fp1=fopen("admission.txt","a");
+}
