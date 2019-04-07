@@ -23,7 +23,7 @@ The college management.
 
 FLOW CHART OF THE PROJECT :-
 
-
+![s1](https://user-images.githubusercontent.com/47209023/55679408-f7a72100-5928-11e9-9097-2e8e39ad1fe5.PNG)
 
 MODULAR DESCRIPION :-
 
@@ -48,6 +48,16 @@ Performances, timetable and attendance.
 
 OUTPUT SNAPSHOTS :-
 
+![s2](https://user-images.githubusercontent.com/47209023/55679410-faa21180-5928-11e9-9b59-a3fac5951243.PNG)
+![s3](https://user-images.githubusercontent.com/47209023/55679414-01c91f80-5929-11e9-87d5-20d01d4a7f29.PNG)
+![s4](https://user-images.githubusercontent.com/47209023/55679415-01c91f80-5929-11e9-8bf6-33ffddd50e40.PNG)
+![s5](https://user-images.githubusercontent.com/47209023/55679412-01308900-5929-11e9-9099-6a974187777f.PNG)
+![s6](https://user-images.githubusercontent.com/47209023/55679413-01308900-5929-11e9-8052-e98cf5a3ae92.PNG)
+![s7](https://user-images.githubusercontent.com/47209023/55679422-08f02d80-5929-11e9-9a1d-e3aa3d2199ce.PNG)
+![s8](https://user-images.githubusercontent.com/47209023/55679423-08f02d80-5929-11e9-9442-aba8a4387a44.PNG)
+![s9](https://user-images.githubusercontent.com/47209023/55679420-08579700-5929-11e9-945f-25d48a82f47f.PNG)
+![s10](https://user-images.githubusercontent.com/47209023/55679421-08f02d80-5929-11e9-8349-e632bf2e199f.PNG)
+
 
 CONCLUSION :-
 
@@ -57,3 +67,5 @@ It stores all the records of students and teachers. The main principle behind
 the need of college management system is easy supervision of institute. 
 The code can help us to explore all the activities happening inside the college
 hence it mainly reduces the workload of the administrator and is user friendly. 
+
+![s11](https://user-images.githubusercontent.com/47209023/55679424-0db4e180-5929-11e9-8ef3-75d97f19d723.PNG)
